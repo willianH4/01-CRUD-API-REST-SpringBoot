@@ -1,5 +1,7 @@
 package com.whernandez.cruddemo;
 
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,8 +26,32 @@ public class CrudDemoApplication {
 //			createMultipleStudent(studentDAO);
 			
 //			readStudentById(studentDAO);
+			
+//			getStudentsUsingQuery(studentDAO);
+			
+			getStudentByLastNameUsingQuery(studentDAO);
 		};
 		
+	}
+
+	private void getStudentByLastNameUsingQuery(StudentDAO studentDAO) {
+		// get a list of students
+		List<Student> theStudents = studentDAO.findByLastName("Doe");
+		
+		// display list of students
+		for(Student tempStudent : theStudents) {
+			System.out.println(tempStudent);
+		}
+	}
+
+	private void getStudentsUsingQuery(StudentDAO studentDAO) {
+		// get a list of students
+		List<Student> theStudents = studentDAO.findAll();
+		
+		// display list of students
+		for(Student tempStudent : theStudents ) {
+			System.out.println(tempStudent);
+		}
 	}
 
 	private void readStudentById(StudentDAO studentDAO) {
